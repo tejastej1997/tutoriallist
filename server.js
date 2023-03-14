@@ -31,11 +31,12 @@ app.get('/', async (req, res) => {
 app.post('/', async (req, res) => {
 
     try {
-        const { name, DOB, gender, contactnum, email, education, institute, standard, subject, totalfee, paidfee, duefee } = req.body;
+        const { name, DOB, gender,age, contactnum, email, education, institute, standard, subject, totalfee, paidfee, duefee } = req.body;
         const newStudent = new tutorialdetails({
             name: name,
             DOB: DOB,
             gender: gender,
+            age:age,
             contactnum: contactnum,
             email: email,
             education: education,
