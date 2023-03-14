@@ -56,16 +56,22 @@ app.post('/', async (req, res) => {
     }
 })
 
-app.get('/:id',async(req,res)=>{
-    return res.json(await tutorialdetails.find())
+app.get('/:id', async (req, res) => {
+    try {
+        return res.json(await tutorialdetails.findById(req.params.id))
+    }
+    catch (err) {
+        console.log(err);
+    }
+
 })
-app.put('/update:id', async(req, res) => {
+app.put('/update:id', async (req, res) => {
     const { name, DOB, gender, age, contactnum, email, education, institute, standard, subject, totalfee, paidfee, duefee } = req.body;
 
-    try{
+    try {
 
         const updatedStudent = new tutorialdetails({
-            _id:id,
+            _id: id,
             name: name,
             DOB: DOB,
             gender: gender,
@@ -80,12 +86,12 @@ app.put('/update:id', async(req, res) => {
             paidfee: paidfee,
             duefee: duefee
         })
-       await tutorialdetails.findByIdAndUpdate(id,updatedStudent)
-       return res.json( await tutorialdetails.find())
+        await tutorialdetails.findByIdAndUpdate(id, updatedStudent)
+        return res.json(await tutorialdetails.find())
     }
-    catch (err){
+    catch (err) {
         console.log(err);
-        
+
     }
 
 
