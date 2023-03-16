@@ -65,7 +65,8 @@ app.get('/:id', async (req, res) => {
     }
 
 })
-app.put('/update:id', async (req, res) => {
+app.put('/update/:id', async (req, res) => {
+
     const { name, DOB, gender, age, contactnum, email, education, institute, standard, subject, totalfee, paidfee, duefee } = req.body;
 
     try {
